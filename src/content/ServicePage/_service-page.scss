@@ -1,0 +1,7 @@
+@import './mixins.scss';
+
+.service-page__banner {
+  padding: $spacing-05;
+  padding-bottom: $spacing-07 * 4;
+  @include service-page-background;
+}
