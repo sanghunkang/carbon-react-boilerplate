@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import {
   Breadcrumb,
   BreadcrumbItem,
-  Button,
-  Tabs,
-  Tab,
+  ExpandableTile,
   Search,
   SearchSkeleton,
   SearchFilterButton,
@@ -50,8 +48,11 @@ export default function ServicePage() {
   });
 
   return (
-    <div className="bx--grid bx--grid--full-width landing-page">
-      <div className="bx--row service-page__banner">
+    <div className="bx--grid bx--grid--full-width bx--grid--no-gutter landing-page">
+      <div className="bx--row sevice-page__r1 service-page__banner">
+        <div className="bx--col-lg-16">
+          <ExpandableTile />
+        </div>
         <div className="bx--col-lg-4">
           <Breadcrumb noTrailingSlash aria-label="Page navigation">
             <BreadcrumbItem>
