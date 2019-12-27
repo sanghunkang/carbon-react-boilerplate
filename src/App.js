@@ -6,6 +6,7 @@ import { Route, Switch } from 'react-router-dom';
 import LandingPage from './content/LandingPage';
 import RepoPage from './content/RepoPage';
 import ServicePage from './content/ServicePage'
+import SidebarPage from './content/SidebarPage'
 
 class App extends Component {
   render() {
@@ -17,6 +18,7 @@ class App extends Component {
             <Route exact path="/" component={LandingPage} />
             <Route path="/repos" component={RepoPage} />
             <Route path="/services" component={ServicePage} />
+            <Route path="/sidebar" component={SidebarPage} />
           </Switch>
         </Content>
       </>
