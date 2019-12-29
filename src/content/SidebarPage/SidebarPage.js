@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {
   Content,
   SideNav,
@@ -7,12 +7,50 @@ import {
   SideNavMenu,
   SideNavMenuItem
 } from "carbon-components-react/lib/components/UIShell";
+import { DonutChart, LineChart, ScatterChart, StackedBarChart } from '@carbon/charts-react';
 
 const StoryContent = () => {
+  const [stackedBarData, setStackedBarData] = useState({
+    labels: ['Quantity', 'Leads', 'Sold', 'Restocking', 'Misc'],
+    datasets: [
+      {
+        label: 'Dataset 2',
+        data: [32432, 21312, 56456, 21312, 34234],
+      },
+      {
+        label: 'Dataset 1',
+        data: [65000, 29123, 35213, 51213, 16932],
+      },
+      {
+        label: 'Dataset 3',
+        data: [12312, 23232, 34232, 12312, 34234],
+      },
+    ],
+  });
+
+  const [stackedBarOptions, setStackedBarOptions] = useState({
+    title: 'Stacked bar (discrete)',
+    axes: {
+      left: {
+        primary: true,
+        stacked: true,
+      },
+      bottom: {
+        scaleType: 'labels',
+        secondary: true,
+      },
+    },
+    height: '400px',
+  });
+
   const content = (
     <div className="bx--grid">
       <div className="bx--row">
         <section className="bx--offset-lg-3 bx--col-lg-13">
+          <StackedBarChart
+            data={stackedBarData}
+            options={stackedBarOptions}
+          />
           <h2
             style={{
               fontWeight: "800",

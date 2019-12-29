@@ -13,20 +13,6 @@ import { InfoSection, InfoCard } from '../../components/Info';
 
 import '@carbon/charts/styles.css';
 
-const stackedBarOptions = {
-  title: 'Stacked bar (discrete)',
-  axes: {
-    left: {
-      primary: true,
-      stacked: true,
-    },
-    bottom: {
-      scaleType: 'labels',
-      secondary: true,
-    },
-  },
-  height: '400px',
-};
 
 export default function ServicePage() {
   const [stackedBarData, setStackedBarData] = useState({
@@ -45,6 +31,21 @@ export default function ServicePage() {
         data: [12312, 23232, 34232, 12312, 34234],
       },
     ],
+  });
+
+  const [stackedBarOptions, setStackedBarOptions] = useState({
+    title: 'Stacked bar (discrete)',
+    axes: {
+      left: {
+        primary: true,
+        stacked: true,
+      },
+      bottom: {
+        scaleType: 'labels',
+        secondary: true,
+      },
+    },
+    height: '400px',
   });
 
   return (
