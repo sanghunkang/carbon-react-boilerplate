@@ -10,6 +10,7 @@ import {
 import { Link, Route, Switch } from 'react-router-dom';
 import LineChartContent from './LineChartContent';
 import BarChartContent from './BarChartContent';
+import MiscComponents from './MiscComponents';
 
 function StoryContent() {
   return(
@@ -68,6 +69,7 @@ export default function SidebarPage() {
           <SideNavItems>
             <SideNavLink element={Link} to="/sidebar/barchart">BarChart</SideNavLink>
             <SideNavLink element={Link} to="/sidebar/linechart">LineChart</SideNavLink>
+            <SideNavLink element={Link} to="/sidebar/misc-components">MiscComponents</SideNavLink>
             <SideNavMenu title="L0 menu">
               <SideNavMenuItem>
                 L0 menu item
@@ -107,6 +109,7 @@ export default function SidebarPage() {
           <Route exact path="/sidebar" render={props => <StoryContent />}/>
           <Route path="/sidebar/linechart" render={props => <LineChartContent />}/>
           <Route path="/sidebar/barchart" render={props => <BarChartContent />}/>
+          <Route path="/sidebar/misc-components" render={props => <MiscComponents />}/>
         </Switch>
     </div>
   );
