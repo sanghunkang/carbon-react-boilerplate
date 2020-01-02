@@ -1,14 +1,34 @@
 import React, { useState } from 'react';
-import { DataTable } from 'carbon-components';
-const {
+import {
+  Button,
+  DataTable,
+  FileUploaderDropContainer,
+  FileUploader,
   TableContainer,
   Table,
   TableHead,
   TableRow,
-  TableBody,
-  TableCell,
+  TableExpandHeader,
   TableHeader,
-} = DataTable;
+  TableBody,
+  TableExpandRow,
+  TableCell,
+  TableExpandedRow,
+
+  Header,
+  HeaderName,
+  HeaderGlobalBar,
+  HeaderGlobalAction,
+  
+  HeaderPanel,
+  Switcher,
+  SwitcherItem,
+  SwitcherDivider,
+} from 'carbon-components-react';
+import Search20 from '@carbon/icons-react/lib/application/20';
+import Notification20 from '@carbon/icons-react/lib/application/20';
+import AppSwitcher20 from '@carbon/icons-react/lib/application/20';
+
 
 export default function MiscComponents() {
   const rows = [
@@ -50,9 +70,61 @@ export default function MiscComponents() {
     },
   ];
 
+  const getRowDescription = rowId => {
+    const row = rows.find(({ id }) => id === rowId);
+    return row ? row.description : '';
+  };
+
+  const action = (text) => {
+    console.log(text);
+  }
+
   return(
     <div id="main-content">
       <div className="bx--grid">
+
+          <HeaderGlobalBar>
+            <HeaderGlobalAction
+              aria-label="Search"
+              onClick={action('search click')}>
+              <Search20 />
+            </HeaderGlobalAction>
+            <HeaderGlobalAction
+              aria-label="Notifications"
+              onClick={action('notification click')}>
+              <Notification20 />
+            </HeaderGlobalAction>
+            <HeaderGlobalAction
+              aria-label="App Switcher"
+              isActive
+              onClick={action('app-switcher click')}>
+              <AppSwitcher20 />
+            </HeaderGlobalAction>
+          </HeaderGlobalBar>
+          <HeaderPanel aria-label="Header Panel" expanded>
+            <Switcher role="menu" aria-label="Switcher Container">
+              <SwitcherItem isSelected aria-label="Link 1" href="#">
+                Link 1
+              </SwitcherItem>
+              <SwitcherDivider />
+              <SwitcherItem href="#" aria-label="Link 2">
+                Link 2
+              </SwitcherItem>
+              <SwitcherItem href="#" aria-label="Link 3">
+                Link 3
+              </SwitcherItem>
+              <SwitcherItem href="#" aria-label="Link 4">
+                Link 4
+              </SwitcherItem>
+              <SwitcherItem href="#" aria-label="Link 5">
+                Link 5
+              </SwitcherItem>
+              <SwitcherDivider />
+              <SwitcherItem href="#" aria-label="Link 6">
+                Link 6
+              </SwitcherItem>
+            </Switcher>
+          </HeaderPanel>
         <div className="bx--row">
           <section className="bx--offset-lg-3 bx--col-lg-13">
             <h2
@@ -64,104 +136,24 @@ export default function MiscComponents() {
             >
               Data Table
             </h2>
+            
             <DataTable
-              filterRows={function noRefCheck(){}}
-              headers={[
-                {
-                  header: 'Name',
-                  key: 'name'
-                },
-                {
-                  header: 'Protocol',
-                  key: 'protocol'
-                },
-                {
-                  header: 'Port',
-                  key: 'port'
-                },
-                {
-                  header: 'Rule',
-                  key: 'rule'
-                },
-                {
-                  header: 'Attached Groups',
-                  key: 'attached_groups'
-                },
-                {
-                  header: 'Status',
-                  key: 'status'
-                }
-              ]}
-              locale="en"
-              render={function noRefCheck(){}}
-              rows={[
-                {
-                  attached_groups: 'Kevins VM Groups',
-                  id: 'a',
-                  name: 'Load Balancer 3',
-                  port: 3000,
-                  protocol: 'HTTP',
-                  rule: 'Round robin',
-                  status: 'Disabled'
-                },
-                {
-                  attached_groups: 'Maureens VM Groups',
-                  id: 'b',
-                  name: 'Load Balancer 1',
-                  port: 443,
-                  protocol: 'HTTP',
-                  rule: 'Round robin',
-                  status: 'Starting'
-                },
-                {
-                  attached_groups: 'Andrews VM Groups',
-                  id: 'c',
-                  name: 'Load Balancer 2',
-                  port: 80,
-                  protocol: 'HTTP',
-                  rule: 'DNS delegation',
-                  status: 'Active'
-                },
-                {
-                  attached_groups: 'Marcs VM Groups',
-                  id: 'd',
-                  name: 'Load Balancer 6',
-                  port: 3000,
-                  protocol: 'HTTP',
-                  rule: 'Round robin',
-                  status: 'Disabled'
-                },
-                {
-                  attached_groups: 'Mels VM Groups',
-                  id: 'e',
-                  name: 'Load Balancer 4',
-                  port: 443,
-                  protocol: 'HTTP',
-                  rule: 'Round robin',
-                  status: 'Starting'
-                },
-                {
-                  attached_groups: 'Ronjas VM Groups',
-                  id: 'f',
-                  name: 'Load Balancer 5',
-                  port: 80,
-                  protocol: 'HTTP',
-                  rule: 'DNS delegation',
-                  status: 'Active'
-                }
-              ]}
-              size={null}
-              sortRow={function noRefCheck(){}}
-              translateWithId={function noRefCheck(){}}
-            />
-            {/* <DataTable
               rows={rows}
               headers={headers}
-              render={({ rows, headers, getHeaderProps }) => (
-                <TableContainer title="DataTable">
-                  <Table>
+              render={({
+                rows,
+                headers,
+                getHeaderProps,
+                getRowProps,
+                getTableProps,
+              }) => (
+                <TableContainer
+                  title="Carbon Repositories"
+                  description="A collection of public Carbon repositories.">
+                  <Table {...getTableProps()}>
                     <TableHead>
                       <TableRow>
+                        <TableExpandHeader />
                         {headers.map(header => (
                           <TableHeader {...getHeaderProps({ header })}>
                             {header.header}
@@ -171,17 +163,67 @@ export default function MiscComponents() {
                     </TableHead>
                     <TableBody>
                       {rows.map(row => (
-                        <TableRow key={row.id}>
-                          {row.cells.map(cell => (
-                            <TableCell key={cell.id}>{cell.value}</TableCell>
-                          ))}
-                        </TableRow>
+                        <React.Fragment key={row.id}>
+                          <TableExpandRow {...getRowProps({ row })}>
+                            {row.cells.map(cell => (
+                              <TableCell key={cell.id}>{cell.value}</TableCell>
+                            ))}
+                          </TableExpandRow>
+                          <TableExpandedRow colSpan={headers.length + 1}>
+                            <p>{getRowDescription(row.id)}</p>
+                          </TableExpandedRow>
+                        </React.Fragment>
                       ))}
                     </TableBody>
                   </Table>
                 </TableContainer>
               )}
-            /> */}
+            />
+            <div className="bx--file__container">
+              <FileUploader
+                ref={function noRefCheck(){}}
+                accept={[
+                  '.jpg',
+                  '.png'
+                ]}
+                buttonKind="primary"
+                buttonLabel="Add files"
+                filenameStatus="edit"
+                iconDescription="Clear file"
+                labelDescription="only .jpg files at 500mb or less"
+                labelTitle="Upload"
+                multiple
+                name=""
+                onClick={function noRefCheck(){}}
+              />
+              <Button
+                disabled={false}
+                kind="secondary"
+                onClick={function noRefCheck(){}}
+                size="small"
+                style={{
+                  marginTop: '1rem'
+                }}
+                tabIndex={0}
+                type="button"
+              >
+                Clear File
+              </Button>
+              <FileUploaderDropContainer
+                accept={[
+                  'image/jpeg',
+                  'image/png'
+                ]}
+                labelText="Drag and drop files here or click to upload"
+                multiple
+                name=""
+                onAddFiles={function noRefCheck(){}}
+                onChange={function noRefCheck(){}}
+                role=""
+                tabIndex={0}
+              />
+            </div>
+            
             <p style={{ lineHeight: "20px" }}>
               The shell is perhaps the most crucial piece of any UI built with
               Carbon. It contains the shared navigation framework for the entire
@@ -194,6 +236,7 @@ export default function MiscComponents() {
             </p>
           </section>
         </div>
+
       </div>
     </div>
   )
