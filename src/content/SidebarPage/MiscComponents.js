@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import {
   Button,
+  Checkbox,
   DataTable,
   FileUploaderDropContainer,
   FileUploader,
+  Form,
+  FormGroup,
+  NumberInput,
   TableContainer,
   Table,
   TableHead,
@@ -14,16 +18,23 @@ import {
   TableExpandRow,
   TableCell,
   TableExpandedRow,
-
+  Toggle,
   Header,
   HeaderName,
   HeaderGlobalBar,
   HeaderGlobalAction,
   
   HeaderPanel,
+  RadioButton,
+  RadioButtonGroup,
+  Search,
+  Select,
+  SelectItem,
   Switcher,
   SwitcherItem,
   SwitcherDivider,
+  TextInput,
+  TextArea,
 } from 'carbon-components-react';
 import Search20 from '@carbon/icons-react/lib/application/20';
 import Notification20 from '@carbon/icons-react/lib/application/20';
@@ -234,6 +245,261 @@ export default function MiscComponents() {
               <br />
               <br />
             </p>
+            <Form
+              className="some-class"
+              onSubmit={function noRefCheck(){}}
+            >
+              <FormGroup
+                className="some-class"
+                invalid={false}
+                legendText="Checkbox heading"
+                message={false}
+                messageText=""
+              >
+                <Checkbox
+                  className="some-class"
+                  defaultChecked
+                  id="checkbox-0"
+                  indeterminate={false}
+                  labelText="Checkbox label"
+                  onChange={function noRefCheck(){}}
+                />
+                <Checkbox
+                  className="some-class"
+                  id="checkbox-1"
+                  indeterminate={false}
+                  labelText="Checkbox label"
+                  onChange={function noRefCheck(){}}
+                />
+                <Checkbox
+                  className="some-class"
+                  disabled
+                  id="checkbox-2"
+                  indeterminate={false}
+                  labelText="Checkbox label"
+                  onChange={function noRefCheck(){}}
+                />
+              </FormGroup>
+              <NumberInput
+                className="some-class"
+                id="number-input-1"
+                label="Number Input"
+                max={100}
+                min={0}
+                step={10}
+                value={50}
+              />
+              <FormGroup
+                className="some-class"
+                invalid={false}
+                legendText="Toggle heading"
+                message={false}
+                messageText=""
+              >
+                <Toggle
+                  aria-label="Toggle"
+                  className="some-class"
+                  defaultToggled={false}
+                  id="toggle-1"
+                  labelA="Off"
+                  labelB="On"
+                  onToggle={function noRefCheck(){}}
+                />
+                <Toggle
+                  aria-label="Toggle"
+                  className="some-class"
+                  defaultToggled={false}
+                  disabled
+                  id="toggle-2"
+                  labelA="Off"
+                  labelB="On"
+                  onToggle={function noRefCheck(){}}
+                />
+              </FormGroup>
+              <FormGroup
+                className="some-class"
+                invalid={false}
+                legendText="File Uploader"
+                message={false}
+                messageText=""
+              >
+                <FileUploader
+                  accept={[]}
+                  buttonKind="primary"
+                  buttonLabel="Add files"
+                  className="some-class"
+                  filenameStatus="uploading"
+                  iconDescription="Provide icon description"
+                  id="file-1"
+                  labelDescription="Choose Files..."
+                  multiple={false}
+                  onClick={function noRefCheck(){}}
+                />
+              </FormGroup>
+              <FormGroup
+                className="some-class"
+                invalid={false}
+                legendText="Radio Button heading"
+                message={false}
+                messageText=""
+              >
+                <RadioButtonGroup
+                  defaultSelected="default-selected"
+                  labelPosition="right"
+                  name="radio-button-group"
+                  onChange={function noRefCheck(){}}
+                  orientation="horizontal"
+                >
+                  <RadioButton
+                    className="some-class"
+                    id="radio-1"
+                    labelText="Standard Radio Button"
+                    value="standard"
+                  />
+                  <RadioButton
+                    className="some-class"
+                    id="radio-2"
+                    labelText="Default Selected Radio Button"
+                    value="default-selected"
+                  />
+                  <RadioButton
+                    className="some-class"
+                    id="radio-3"
+                    labelText="Standard Radio Button"
+                    value="blue"
+                  />
+                  <RadioButton
+                    className="some-class"
+                    disabled
+                    id="radio-4"
+                    labelText="Disabled Radio Button"
+                    value="disabled"
+                  />
+                </RadioButtonGroup>
+              </FormGroup>
+              <FormGroup
+                className="some-class"
+                invalid={false}
+                legendText="Search"
+                message={false}
+                messageText=""
+              >
+                <Search
+                  className="some-class"
+                  closeButtonLabelText="Clear search input"
+                  id="search-1"
+                  labelText="Search"
+                  onChange={function noRefCheck(){}}
+                  placeHolderText="Search"
+                  type="text"
+                />
+              </FormGroup>
+              <Select
+                className="some-class"
+                defaultValue="placeholder-item"
+                disabled={false}
+                helperText=""
+                id="select-1"
+                inline={false}
+                invalid={false}
+                invalidText=""
+                labelText="Select"
+                light={false}
+              >
+                <SelectItem
+                  disabled
+                  hidden
+                  text="Choose an option"
+                  value="placeholder-item"
+                />
+                <SelectItem
+                  disabled={false}
+                  hidden={false}
+                  text="Option 1"
+                  value="option-1"
+                />
+                <SelectItem
+                  disabled={false}
+                  hidden={false}
+                  text="Option 2"
+                  value="option-2"
+                />
+                <SelectItem
+                  disabled={false}
+                  hidden={false}
+                  text="Option 3"
+                  value="option-3"
+                />
+              </Select>
+              <TextInput
+                className="some-class"
+                disabled={false}
+                helperText=""
+                id="test2"
+                invalid={false}
+                invalidText=""
+                labelText="Text Input label"
+                light={false}
+                onChange={function noRefCheck(){}}
+                onClick={function noRefCheck(){}}
+                placeholder="Placeholder text"
+                type="text"
+              />
+              <TextInput
+                className="some-class"
+                disabled={false}
+                helperText=""
+                id="test3"
+                invalid={false}
+                invalidText=""
+                labelText="Password"
+                light={false}
+                onChange={function noRefCheck(){}}
+                onClick={function noRefCheck(){}}
+                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+                required
+                type="password"
+              />
+              <TextInput
+                className="some-class"
+                disabled={false}
+                helperText=""
+                id="test4"
+                invalid
+                invalidText="Your password must be at least 6 characters as well as contain at least one uppercase, one lowercase, and one number."
+                labelText="Password"
+                light={false}
+                onChange={function noRefCheck(){}}
+                onClick={function noRefCheck(){}}
+                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+                required
+                type="password"
+              />
+              <TextArea
+                className="some-class"
+                cols={50}
+                disabled={false}
+                helperText=""
+                id="test5"
+                invalid={false}
+                invalidText=""
+                labelText="Text Area label"
+                light={false}
+                onChange={function noRefCheck(){}}
+                onClick={function noRefCheck(){}}
+                placeholder="Placeholder text"
+                rows={4}
+              />
+              <Button
+                className="some-class"
+                disabled={false}
+                kind="primary"
+                tabIndex={0}
+                type="submit"
+              >
+                Submit
+              </Button>
+            </Form>
           </section>
         </div>
 
