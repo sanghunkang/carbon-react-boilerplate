@@ -1,17 +1,19 @@
-import React, { Component } from 'react';
+import React, { Suspense, Component } from 'react';
 import './app.scss';
 import { Content } from 'carbon-components-react/lib/components/UIShell';
 import TutorialHeader from './components/TutorialHeader';
 import { Route, Switch } from 'react-router-dom';
-import LandingPage from './content/LandingPage';
-import RepoPage from './content/RepoPage';
-import ServicePage from './content/ServicePage'
-import SidebarPage from './content/SidebarPage'
+const LandingPage = React.lazy(() => import('./content/LandingPage'));
+const RepoPage = React.lazy(() => import('./content/RepoPage'));
+const ServicePage = React.lazy(() => import('./content/ServicePage'));
+const SidebarPage = React.lazy(() => import('./content/SidebarPage'));
+
 
 class App extends Component {
   render() {
     return (
       <>
+        <Suspense fallback={<div>Loading...</div>}>
         <TutorialHeader />
         <Content>
           <Switch>
@@ -21,6 +23,7 @@ class App extends Component {
             <Route path="/sidebar" component={SidebarPage} />
           </Switch>
         </Content>
+        </Suspense>
       </>
     );
   }
