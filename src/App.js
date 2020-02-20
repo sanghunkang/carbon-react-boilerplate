@@ -18,8 +18,8 @@ class App extends Component {
         <Content>
           <Switch>
             <Route exact path="/" component={LandingPage} />
-            <Route path="/repos" component={RepoPage} />
-            <Route path="/services" component={ServicePage} />
+            <Route path="/repo" component={RepoPage} />
+            <Route path="/service" component={ServicePage} />
             <Route path="/sidebar" component={SidebarPage} />
           </Switch>
         </Content>
