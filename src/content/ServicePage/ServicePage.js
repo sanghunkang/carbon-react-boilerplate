@@ -65,7 +65,7 @@ export default function ServicePage() {
           <h1 className="landing-page__heading">
             Design &amp; build with Carbon
           </h1>
-          <Search />
+          <Search labelText="label text"/>
           <SearchSkeleton />
           <SearchFilterButton />
           <SearchLayoutButton />
@@ -95,7 +95,7 @@ export default function ServicePage() {
             options={stackedBarOptions}
           />
         </div>
-        <DataTable
+        {/* <DataTable
               filterRows={function noRefCheck(){}}
               headers={[
                 {
@@ -184,7 +184,7 @@ export default function ServicePage() {
               size={null}
               sortRow={function noRefCheck(){}}
               translateWithId={function noRefCheck(){}}
-            />
+            /> */}
       </div>
     </div>
   )
