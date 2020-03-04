@@ -120,14 +120,14 @@ const getRowItems = rows =>
     },
   ];
 
-const RepoPage = () => {
+const Repos = () => {
   const [totalItems, setTotalItems] = useState(0);
   const [firstRowIndex, setFirstRowIndex] = useState(0);
   const [currentPageSize, setCurrentPageSize] = useState(10);
 
   return (
-    <div className="bx--grid bx--grid--full-width bx--grid--no-gutter repo-page">
-      <div className="bx--row repo-page__r1">
+    <div className="bx--grid bx--grid--full-width bx--grid--no-gutter repos">
+      <div className="bx--row repos__r1">
         <div className="bx--col-lg-16">
           <RepoTable
             headers={headers}
@@ -156,4 +156,4 @@ const RepoPage = () => {
   );
 };
 
-export default RepoPage;
+export default Repos;

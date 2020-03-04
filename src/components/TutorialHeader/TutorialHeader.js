@@ -13,22 +13,14 @@ import UserAvatar20 from '@carbon/icons-react/lib/user--avatar/20';
 import AppSwitcher20 from '@carbon/icons-react/lib/app-switcher/20';
 import { Link } from 'react-router-dom';
 
-const TutorialHeader = () => (
+const TutorialHeader = ({ pages }) => (
   <Header aria-label="Carbon Tutorial">
     <SkipToContent />
     <HeaderName element={Link} to="/" prefix="IBM">
       Carbon Tutorial
     </HeaderName>
     <HeaderNavigation aria-label="Carbon Tutorial">
-      <HeaderMenuItem element={Link} to="/repos">
-        Repositories
-      </HeaderMenuItem>
-      <HeaderMenuItem element={Link} to="/services">
-        Services
-      </HeaderMenuItem>
-      <HeaderMenuItem element={Link} to="/sidebar">
-        Sidebar
-      </HeaderMenuItem>
+      { pages.map(page => <HeaderMenuItem element={Link} to={page.route}>{page.label}</HeaderMenuItem>) }
     </HeaderNavigation>
     <HeaderGlobalBar>
       <HeaderGlobalAction aria-label="Notifications">
