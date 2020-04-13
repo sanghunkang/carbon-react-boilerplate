@@ -16,8 +16,8 @@ import { Link } from 'react-router-dom';
 const TutorialHeader = ({ pages }) => (
   <Header aria-label="Carbon Tutorial">
     <SkipToContent />
-    <HeaderName element={Link} to="/" prefix="IBM">
-      Carbon Tutorial
+    <HeaderName element={Link} to="/" prefix="Carbon">
+      React Boilerplate
     </HeaderName>
     <HeaderNavigation aria-label="Carbon Tutorial">
       { pages.map(page => <HeaderMenuItem element={Link} to={page.route}>{page.label}</HeaderMenuItem>) }
